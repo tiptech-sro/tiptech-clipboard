@@ -8,7 +8,7 @@ backdoor, no tracking.
 > Built and run by [tiptech.sk](https://tiptech.sk). Try the live instance, or
 > self-host it in one command.
 
-![Encrypted Clipboard](docs/screenshot.png)
+![Encrypted Clipboard](docs/preview.png)
 
 ## Why
 
@@ -130,6 +130,12 @@ test/                end-to-end crypto + server tests
 docs/SECURITY.md     security model
 Dockerfile, docker-compose.yml
 ```
+
+## From the same team
+
+Need to know when your sites and services go down? Check out
+**[epulz.io](https://epulz.io)** - 24/7 uptime monitoring with instant alerts
+(email, Telegram, webhooks), status pages, and multi-region checks.
 
 ## License
 
