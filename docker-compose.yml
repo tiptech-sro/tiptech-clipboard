@@ -1,0 +1,19 @@
+services:
+  clipboard:
+    build: .
+    # Or use a published image instead of build:
+    # image: ghcr.io/tiptech-sro/tiptech-clipboard:latest
+    restart: unless-stopped
+    ports:
+      - "8470:8470"
+    environment:
+      # Set this to your real public URL when behind a reverse proxy:
+      CLIPBOARD_BASE_URL: "http://localhost:8470"
+      CLIPBOARD_MAX_MB: "20"
+      CLIPBOARD_CAPTCHA: "1"
+      CLIPBOARD_DEFAULT_EXPIRY: "7d"
+    volumes:
+      - clipboard-data:/data
+
+volumes:
+  clipboard-data:

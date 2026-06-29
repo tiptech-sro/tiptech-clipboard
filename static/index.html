@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Encrypted Clipboard</title>
+<meta name="description" content="Zero-knowledge encrypted clipboard. Encrypted in your browser, the server never sees your data.">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="lock" aria-hidden="true">&#128274;</span> Encrypted Clipboard</a>
+  <div class="langs">
+    <button data-lang="en">EN</button>
+    <button data-lang="sk">SK</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <p id="tagline" class="tagline"></p>
+
+  <!-- ============ CREATE VIEW ============ -->
+  <section id="createView" class="card hidden">
+    <label id="lblText" class="lbl"></label>
+    <textarea id="text" rows="7"></textarea>
+
+    <label id="lblFiles" class="lbl"></label>
+    <div id="drop" class="drop"><span id="dropTxt"></span></div>
+    <input id="fileInput" type="file" multiple hidden>
+    <ul id="fileList" class="filelist"></ul>
+
+    <div class="row">
+      <div class="col">
+        <label id="lblPw" class="lbl"></label>
+        <input id="pw" type="text" autocomplete="off">
+        <small id="pwHint" class="hint"></small>
+      </div>
+      <div class="col narrow">
+        <label id="lblExpiry" class="lbl"></label>
+        <select id="expiry"></select>
+      </div>
+    </div>
+
+    <label class="check"><input id="burn" type="checkbox"> <span id="lblBurn"></span></label>
+
+    <div id="challengeWrap" class="hidden">
+      <label id="lblChallenge" class="lbl"></label>
+      <div class="row">
+        <span id="challengeQ" class="challengeq"></span>
+        <input id="challengeA" type="text" inputmode="numeric" class="narrow">
+      </div>
+    </div>
+
+    <p id="createErr" class="err hidden"></p>
+    <button id="createBtn" class="primary"></button>
+  </section>
+
+  <!-- ============ RESULT VIEW ============ -->
+  <section id="resultView" class="card hidden">
+    <h2 id="resTitle"></h2>
+    <p id="resHint" class="hint"></p>
+    <div class="linkbox">
+      <input id="shareUrl" readonly>
+      <button id="copyBtn" class="primary sm"></button>
+    </div>
+    <div class="actions">
+      <a id="openLink" class="btn" target="_blank" rel="noopener"></a>
+      <button id="delBtn" class="btn danger"></button>
+      <button id="newBtn" class="btn ghost"></button>
+    </div>
+    <small id="delHint" class="hint"></small>
+  </section>
+
+  <!-- ============ VIEW (DECRYPT) VIEW ============ -->
+  <section id="readView" class="card hidden">
+    <div id="readStatus" class="status"></div>
+    <div id="pwPrompt" class="hidden">
+      <p id="pwPromptMsg"></p>
+      <div class="linkbox">
+        <input id="readPw" type="password" autocomplete="off">
+        <button id="unlockBtn" class="primary sm"></button>
+      </div>
+      <p id="pwErr" class="err hidden"></p>
+    </div>
+    <div id="content" class="hidden">
+      <pre id="readText" class="readtext hidden"></pre>
+      <button id="copyTextBtn" class="btn ghost sm hidden"></button>
+      <ul id="readFiles" class="filelist"></ul>
+      <p id="readMeta" class="hint"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <span id="footMsg"></span>
+  <span class="sep">&middot;</span>
+  <a href="https://tiptech.sk" target="_blank" rel="noopener">tiptech.sk</a>
+  <span class="sep">&middot;</span>
+  <a href="https://github.com/tiptech-sro/tiptech-clipboard" id="ghLink" target="_blank" rel="noopener">GitHub</a>
+</footer>
+
+<script type="module" src="/app.js"></script>
+</body>
+</html>
